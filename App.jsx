@@ -9,16 +9,18 @@ import './App.css';
 function App() {
   return (
     <div className="app-container">
-      <Header />
-      <Provider store={store}>
-        <div className="content">
-          <Categories />
-          <Products />
-        </div>
-      </Provider>
-      <Footer />
-    </div>
-  );
+    <Provider store={store}>
+    <Header />
+
+      <div className="content">
+        <Categories />
+        <Products />
+      </div>
+    </Provider>
+    <Footer />
+  </div>
+);
 }
 
 export default App;
+
