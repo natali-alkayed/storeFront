@@ -97,29 +97,22 @@ const initialState =
 
     ];
 
-// Action Types
-const DECREASE_INVENTORY = 'DECREASE_INVENTORY';
-const INCREASE_INVENTORY = 'INCREASE_INVENTORY'; // Add a new action type for increasing inventory
 
-// Action Creators
 export const decreaseInventory = (productId) => ({
-  type: DECREASE_INVENTORY,
+  type: 'DECREASE_INVENTORY',
   payload: productId,
 });
 
 export const increaseInventory = (productId) => ({
-  type: INCREASE_INVENTORY,
+  type: 'INCREASE_INVENTORY',
   payload: productId,
 });
 
-// Reducer
+
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DECREASE_INVENTORY:
-      // Find the product by ID
+    case 'DECREASE_INVENTORY':
       const productToUpdate = state.find((product) => product.id === action.payload);
-
-      // Check if the product exists and its inventory count is greater than 0
       if (productToUpdate && productToUpdate.inventoryCount > 0) {
         return state.map((product) =>
           product.id === action.payload
@@ -127,21 +120,18 @@ const productsReducer = (state = initialState, action) => {
             : product
         );
       }
-      return state; // No change if the product doesn't exist or inventory is 0
+      return state; 
 
-    case INCREASE_INVENTORY:
-      // Find the product by ID
+    case 'INCREASE_INVENTORY':
       const productToIncrease = state.find((product) => product.id === action.payload);
-
-      // Check if the product exists
       if (productToIncrease) {
         return state.map((product) =>
           product.id === action.payload
-            ? { ...product, inventoryCount: product.inventoryCount + 1 } // Increase inventory by 1
+            ? { ...product, inventoryCount: product.inventoryCount + 1 }
             : product
         );
       }
-      return state; // No change if the product doesn't exist
+      return state;
 
     default:
       return state;
