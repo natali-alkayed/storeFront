@@ -7,6 +7,7 @@ import store from './src/store/index';
 import './App.css';
 
 function App() {
+
   return (
     <div className="app-container">
     <Provider store={store}>

@@ -2,14 +2,13 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../../store/carts';
 import { increaseInventory } from '../../store/products';
-import DeleteOutlinedIcon from '@mui/icons-material/Delete'; // Import the Delete icon from Material-UI Icons
+import DeleteOutlinedIcon from '@mui/icons-material/Delete'; 
 
 const SimpleCart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (itemId) => {
-    // Dispatch the removeFromCart action with the item's ID
     dispatch(removeFromCart(itemId));
     dispatch(increaseInventory(itemId));
   };
