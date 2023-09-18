@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Products.scss';
 import { addToCart } from '../../store/carts';
-import { decreaseInventory } from '../../store/products';
+import { decreaseInventory, increaseInventory } from '../../store/productSlice'; 
 import { fetchInventory } from '../../store/Api';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const activeCategory = useSelector((state) => state.categories.activeCategory);
@@ -11,6 +12,7 @@ const Products = () => {
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
 
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -59,7 +61,9 @@ const Products = () => {
                 >
                   Add to Cart
                 </button>
-                <button className="view-details">View Details</button>
+                <Link to={`/products/${product.id}`}> 
+                  <button className="view-details">Product Details</button>
+                </Link>
               </div>
             </div>
           ))}
@@ -69,3 +73,5 @@ const Products = () => {
 };
 
 export default Products;
+
+

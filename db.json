@@ -36,6 +36,25 @@
         "inventoryCount": 12,
         "imgPath": "https://i.pinimg.com/originals/8f/da/6f/8fda6f3e00f8bde7b752cfef6ba42e3c.jpg"
       }
+, {
+  "id": 5,
+  "category": "Electronics",
+  "name": "Sony Noise-Canceling Headphones",
+  "description": "Immerse yourself in music with these premium headphones.",
+  "price": 299.99,
+  "inventoryCount": 15,
+  "imgPath": "https://images.sony.com/is/image/SonyLatin/wh-1000xm4-black-1920x1080-1?$native$"
+},
+
+{
+  "id": 7,
+  "category": "Games",
+  "name": "Red Dead Redemption 2",
+  "description": "Experience the wild west in this action-adventure game.",
+  "price": 59.99,
+  "inventoryCount": 10,
+  "imgPath": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2m9r.jpg"
+}
     ]
   
 }
