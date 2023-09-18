@@ -1,43 +1,38 @@
-const initialState =[];
+import { createSlice } from '@reduxjs/toolkit';
 
-export const decreaseInventory = (productId) => ({
-  type: 'DECREASE_INVENTORY',
-  payload: productId,
-});
+const initialState = []; 
 
-export const increaseInventory = (productId) => ({
-  type: 'INCREASE_INVENTORY',
-  payload: productId,
-});
-
-
-const productsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'DECREASE_INVENTORY':
+const productSlice = createSlice({
+  name: 'products',
+  initialState,
+  reducers: {
+    decreaseInventory: (state, action) => {
       const productToUpdate = state.find((product) => product.id === action.payload);
       if (productToUpdate && productToUpdate.inventoryCount > 0) {
-        return state.map((product) =>
+        const updatedState = state.map((product) =>
           product.id === action.payload
             ? { ...product, inventoryCount: product.inventoryCount - 1 }
             : product
         );
+        return updatedState;
       }
-      return state; 
-
-    case 'INCREASE_INVENTORY':
+      return state;
+    },
+    increaseInventory: (state, action) => {
       const productToIncrease = state.find((product) => product.id === action.payload);
       if (productToIncrease) {
-        return state.map((product) =>
+        const updatedState = state.map((product) =>
           product.id === action.payload
             ? { ...product, inventoryCount: product.inventoryCount + 1 }
             : product
         );
+        return updatedState;
       }
       return state;
+    },
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const { decreaseInventory, increaseInventory } = productSlice.actions;
+export default productSlice.reducer;
 
-export default productsReducer;

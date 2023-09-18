@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { fetchInventory } from './Api';
 
 import categoriesReducer from './categories';
-import productsReducer from './products';
+import productsReducer from './productSlice';
 import cartReducer from './carts';
 
 
