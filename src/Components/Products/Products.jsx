@@ -12,6 +12,8 @@ const Products = () => {
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
 
+  
+  
  
   const dispatch = useDispatch();
 
@@ -29,7 +31,9 @@ const Products = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+    console.log('Before dispatching decreaseInventory:', products);
     dispatch(decreaseInventory(product.id));
+    console.log('after dispatching decreaseInventory:', products);
   };
 
   if (loading) {
