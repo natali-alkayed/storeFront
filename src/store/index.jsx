@@ -1,22 +1,21 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { fetchInventory } from './Api';
-
 import categoriesReducer from './categories';
 import productsReducer from './productSlice';
 import cartReducer from './carts';
 
 
-const rootReducer = combineReducers({
-  categories: categoriesReducer, 
-  products: productsReducer,
-  cart: cartReducer, 
 
+const store = configureStore({
+  reducer: {
+    categories: categoriesReducer,
+    products: productsReducer,
+    cart: cartReducer,
+  },
+  middleware: [thunk], 
 });
-
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
 
 export const fetchInventoryAndInitializeProducts = () => {
   return async (dispatch) => {
@@ -30,5 +29,7 @@ export const fetchInventoryAndInitializeProducts = () => {
 };
 
 export default store;
+
+
 
 
